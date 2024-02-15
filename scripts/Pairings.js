@@ -1,33 +1,29 @@
-import { getChildren } from "./database.js"
+import { getChildren, getCelebrities } from "./database.js";
 
-const kids = getChildren()
-const celebrities = getCelebrities()
+const kids = getChildren();
+const celebrities = getCelebrities();
 
-const findCelebrityMatch = (kidObject, celebrityArray) => {
-    let celebrity = null
+const findCelebrityMatch = (kidObject, allCelebrities) => {
+  let celebrityName = null;
 
-    for (const celebrity of celebrtyArray) {
-
+  for (const celebrity of allCelebrities) {
+    if (celebrity.id === kidObject.celebrityId) {
+      celebrityName = celebrity;
     }
+  }
 
-    return celebritiy
-}
+  return celebrityName;
+};
 
 export const Pairings = () => {
-    let html = ""
-    html = "<ul>"
+  let pairHTML = `<ul>`;
 
-    for (const kid of kids) {
-        const kidsStar = findCelebrityMatch(kid, celebrities)
-        html += `
-            <li>
-                ${kid.name} will be making memories with ${kidsStar.name}, a ${kidsStar.Sport} star, by ${kid.wish}
-            </li>
-        `
-    }
+  for (const kid of kids) {
+    const kidsStar = findCelebrityMatch(kid, celebrities);
+    pairHTML += `<li>${kid.name} will be making memories with ${kidsStar.name}, a ${kidsStar.sport} star, by ${kid.wish}</li>`;
+  }
 
-    html += "</ul>"
+  pairHTML += `</ul>`;
 
-    return html
-}
-
+  return pairHTML;
+};

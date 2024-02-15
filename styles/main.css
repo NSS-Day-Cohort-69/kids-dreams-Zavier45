@@ -17,4 +17,13 @@ textarea {
 h1,h2,h3,h4,h5,h6 {
   font-family: "Patua One", serif;
   letter-spacing: 2px;
+  color: #3D405B
+}
+
+h1 {
+	text-align: center;
+}
+
+body {
+	background-color: #F2CC8F;
 }
